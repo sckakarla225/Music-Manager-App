@@ -1,2 +1,2 @@
-# Music Manager AI
-## Organizing your music libraries using AI
+# autotunez
+## organizing your music libraries using AI.
