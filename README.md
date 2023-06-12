@@ -1,2 +1,2 @@
 # autotunes
-## organizing your music libraries using AI.
+## organizing your music libraries using AI
