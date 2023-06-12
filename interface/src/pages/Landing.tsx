@@ -26,15 +26,15 @@ const LandingPage: React.FC = () => {
             <a href="/" className="flex items-center">
               <img src={logo} className="" alt="Busking Logo" width={40} height={40} />
             </a>
-            <p className="text-white font-bold ml-3 text-lg">autotunez</p>
+            <p className="text-white font-bold ml-3 text-lg">autotunes</p>
           </div>
         </div>
       </nav>
       <h1 className="text-7xl text-black text-center font-bold mt-32">
-        Beatmatching your life.
+        Beatmatching your life
       </h1>
       <p className="text-lg text-black text-center font-semibold mt-10 mb-20">
-        Organize your music library with extreme precision
+        Organize all of your favorite songs with extreme precision.
       </p>
       <button 
         className="bg-green-400 hover:bg-green-500 text-white font-bold py-4 px-6 rounded focus:outline-none focus:shadow-outline mb-6 w-1/5 mx-auto"

@@ -3,7 +3,12 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import { LandingPage } from './pages';
+import { 
+  LandingPage,
+  DashboardPage,
+  OrganizeLibraryPage,
+  SettingsPage, 
+} from './pages';
 
 function App() {
   return (
@@ -11,6 +16,9 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/library" element={<OrganizeLibraryPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </Router>
     </Provider>
