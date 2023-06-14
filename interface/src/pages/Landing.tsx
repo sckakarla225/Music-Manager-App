@@ -45,7 +45,7 @@ const LandingPage: React.FC = () => {
         Organize all of your favorite songs with extreme precision.
       </p>
       <button 
-        className="bg-green-400 hover:bg-green-500 text-white font-bold py-4 px-6 rounded focus:outline-none focus:shadow-outline mb-6 w-1/5 mx-auto"
+        className="bg-red-400 hover:bg-red-500 text-white font-bold py-4 px-6 rounded focus:outline-none focus:shadow-outline mb-6 w-1/5 mx-auto"
         onClick={handleSpotifyAuthentication}
       >
         <div className="flex flex-row justify-center items-center">

@@ -10,7 +10,6 @@ const DashboardPage: React.FC = () => {
     <div className="flex flex-col min-h-screen bg-gray-200">
       <SideBar />
       <p className="text-black text-center">Dashboard Page</p>
-      
     </div>
   );
 };
