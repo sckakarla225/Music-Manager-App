@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../redux/types';
-import { setUserId, unsetUserId } from '../redux/actions/userActions';
+// import { RootState } from '../redux/types';
+import { setUser, unsetUser } from '../redux/actions/userActions';
+import { handleSpotifyAuthentication, handleSpotifyAccessToken } from '../api';
+import { useNavigate } from 'react-router-dom';
 
 import logo from '../assets/logo.png';
 import spotifyLogo from '../assets/spotifylogo.png';
 import iTunesLogo from '../assets/ituneslogo.png';
 
 const LandingPage: React.FC = () => {
-  const userId = useSelector((state: RootState) => state.user.userId);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const login = () => {
-    dispatch(setUserId('sam'));
-    console.log(userId);
-  };
+  const handleSpotifyCallback = () => {
+    const accessToken = handleSpotifyAccessToken();
+    if (accessToken != '') {
+      dispatch(setUser(accessToken));
+      console.log(accessToken);
+      navigate("/dashboard");
+    };
+  }
 
-  const logout = () => dispatch(unsetUserId());
+  useEffect(() => {
+    handleSpotifyCallback();
+  }, [navigate]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -38,7 +46,7 @@ const LandingPage: React.FC = () => {
       </p>
       <button 
         className="bg-green-400 hover:bg-green-500 text-white font-bold py-4 px-6 rounded focus:outline-none focus:shadow-outline mb-6 w-1/5 mx-auto"
-        onClick={login}
+        onClick={handleSpotifyAuthentication}
       >
         <div className="flex flex-row justify-center items-center">
           <img src={spotifyLogo} width={30} height={25} />
@@ -47,7 +55,7 @@ const LandingPage: React.FC = () => {
       </button>
       <button 
         className="bg-red-400 hover:bg-red-500 text-white font-bold py-4 px-6 rounded focus:outline-none focus:shadow-outline mb-6 w-1/5 mx-auto"
-        onClick={logout}
+        // onClick={logout}
       >
         <div className="flex flex-row justify-center items-center">
           <img src={iTunesLogo} width={30} height={25} />

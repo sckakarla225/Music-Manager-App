@@ -1,19 +1,19 @@
 import { Reducer } from 'redux';
 
 export interface UserState {
-  userId: string;
+  accessToken: string | null,
 }
 
 const initialState: UserState = {
-  userId: '',
+  accessToken: null,
 };
 
 const userReducer: Reducer<UserState> = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_USER_ID':
-      return { ...state, userId: action.payload };
-    case 'UNSET_USER_ID':
-      return { ...state, userId: action.payload };
+    case 'SET_USER':
+      return { ...state, accessToken: action.payload };
+    case 'UNSET_USER':
+      return { ...state, accessToken: null };
     default:
       return state;
   }

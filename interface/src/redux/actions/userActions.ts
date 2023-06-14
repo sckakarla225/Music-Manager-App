@@ -1,10 +1,10 @@
-export const SET_USER_ID = 'SET_USER_ID';
-export const UNSET_USER_ID = 'UNSET_USER_ID';
+export const SET_USER = 'SET_USER';
+export const UNSET_USER = 'UNSET_USER';
 
-export function setUserId(userId: string) {
-  return { type: SET_USER_ID, payload: { userId } };
+export function setUser(accessToken: string) {
+  return { type: SET_USER, payload: { accessToken } };
 }
 
-export function unsetUserId() {
-  return { type: UNSET_USER_ID, payload: {} };
+export function unsetUser() {
+  return { type: UNSET_USER, payload: {} };
 }

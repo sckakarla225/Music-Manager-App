@@ -1,3 +1,3 @@
-// import components here
+import SideBar from './Sidebar';
 
-export { };
+export { SideBar };
