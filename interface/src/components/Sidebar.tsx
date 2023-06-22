@@ -17,7 +17,12 @@ const SideBar: React.FC = () => {
             <img src={logo} className="" alt="Busking Logo" width={60} height={60} />
           </a>
           <AiFillHome 
-            className={`my-5 cursor-pointer ${location.pathname == '/dashboard' ? 'text-red-500' : 'text-white'}`} 
+            className={`my-5 cursor-pointer ${
+              location.pathname == '/dashboard' 
+                || location.pathname == '/playlists'
+                || location.pathname == '/edit-labels' 
+                ? 'text-red-500' : 'text-white'}`
+            } 
             size={30}
             onClick={() => navigate('/dashboard')} 
           />

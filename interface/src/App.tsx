@@ -6,6 +6,8 @@ import store from './redux/store';
 import { 
   LandingPage,
   DashboardPage,
+  ViewPlaylistsPage,
+  EditLabelsPage,
   OrganizeLibraryPage,
   SettingsPage, 
 } from './pages';
@@ -17,6 +19,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/playlists" element={<ViewPlaylistsPage />} />
+          <Route path="/edit-labels" element={<EditLabelsPage />} />
           <Route path="/library" element={<OrganizeLibraryPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Routes>

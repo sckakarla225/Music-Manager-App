@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/types';
-import { SideBar } from '../../components';
+import { SideBar, Navbar, PlaylistInfo, UpdatePlaylist, PlaylistLeaderboard } from '../../components';
 
 const DashboardPage: React.FC = () => {
   const accessToken = useSelector((state: RootState) => state.user.accessToken);
