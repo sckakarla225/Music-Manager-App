@@ -18,12 +18,23 @@ const handleSpotifyAccessToken = () => {
 
   if (accessToken) {
     spotifyAPI.setAccessToken(accessToken);
+    console.log(accessToken);
     return accessToken;
   }
   return '';
 }
 
+const getUserBasicInfo = async (accessToken: string) => {
+  const spotifyAPI = new SpotifyWebApi();
+  spotifyAPI.setAccessToken(accessToken);
+  const userInfo = await spotifyAPI.getMe();
+  if (userInfo.id) {
+    return userInfo;
+  }
+}
+
 export { 
   handleSpotifyAuthentication, 
   handleSpotifyAccessToken, 
+  getUserBasicInfo,
 };

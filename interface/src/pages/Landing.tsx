@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-// import { RootState } from '../redux/types';
-import { setUser, unsetUser } from '../redux/actions/userActions';
-import { handleSpotifyAuthentication, handleSpotifyAccessToken } from '../api';
+import { useDispatch } from 'react-redux';
+import { setUser, setBasicInfo } from '../redux/actions/userActions';
+import { 
+  handleSpotifyAuthentication, 
+  handleSpotifyAccessToken,
+  getUserBasicInfo, 
+} from '../api';
 import { useNavigate } from 'react-router-dom';
 
 import logo from '../assets/logo.png';
@@ -12,12 +15,22 @@ import iTunesLogo from '../assets/ituneslogo.png';
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const handleSpotifyCallback = () => {
+  
+  // TODO: Add error handling using unset functions
+  const handleSpotifyCallback = async () => {
     const accessToken = handleSpotifyAccessToken();
     if (accessToken != '') {
       dispatch(setUser(accessToken));
       console.log(accessToken);
+      const userInfo = await getUserBasicInfo(accessToken);
+      console.log(userInfo);
+      dispatch(setBasicInfo(
+        userInfo?.id, 
+        userInfo?.display_name, 
+        userInfo?.external_urls.spotify, 
+        userInfo?.images, 
+        userInfo?.email 
+      ));
       navigate("/dashboard");
     };
   }
@@ -55,7 +68,6 @@ const LandingPage: React.FC = () => {
       </button>
       <button 
         className="bg-red-400 hover:bg-red-500 text-white font-bold py-4 px-6 rounded focus:outline-none focus:shadow-outline mb-6 w-1/5 mx-auto"
-        // onClick={logout}
       >
         <div className="flex flex-row justify-center items-center">
           <img src={iTunesLogo} width={30} height={25} />

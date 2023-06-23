@@ -1,9 +1,11 @@
 import { 
   handleSpotifyAuthentication, 
-  handleSpotifyAccessToken 
+  handleSpotifyAccessToken,
+  getUserBasicInfo,
 } from './spotify';
 
 export {
   handleSpotifyAuthentication,
   handleSpotifyAccessToken,
+  getUserBasicInfo,
 };

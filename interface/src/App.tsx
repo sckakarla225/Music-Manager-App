@@ -13,6 +13,7 @@ import {
 } from './pages';
 
 function App() {
+  // TODO: Add protected routes for authentication using access token
   return (
     <Provider store={store}>
       <Router>

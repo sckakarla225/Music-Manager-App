@@ -10,7 +10,7 @@ const SideBar: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex">
+    <div>
       <aside className="flex flex-col justify-between w-28 fixed left-0 top-0 min-h-screen bg-black p-10">
         <div className="mt-5">
           <a href="/" className="flex items-center my-5">
