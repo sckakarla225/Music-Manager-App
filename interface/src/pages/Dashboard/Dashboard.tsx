@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../redux/types';
 import { SideBar, Navbar, PlaylistInfo, UpdatePlaylist, PlaylistLeaderboard } from '../../components';
 
 const DashboardPage: React.FC = () => {
+  const navigate = useNavigate();
   const accessToken = useSelector((state: RootState) => state.user.accessToken);
   
   return (
@@ -12,7 +14,47 @@ const DashboardPage: React.FC = () => {
       <div className="ml-28 p-6 px-12">
         <Navbar />
       </div>
-      <p className="text-black text-center">Organize Library Page</p>
+      <div className="ml-32 p-6 px-12 flex flex-col h-screen">
+        <div className="flex flex-row items-end">
+          <div className="w-2/3 mr-5">
+            <div className="flex flex-row justify-between items-end">
+              <h1 className="text-white font-bold text-3xl">Your Playlists</h1>
+              <p 
+                className="text-red-400 font-semibold text-lg cursor-pointer"
+                onClick={() => navigate('/playlists')}
+              >
+                See all
+              </p>
+            </div>
+          </div>
+          <div className="w-1/3 ml-5">
+            <h1 className="text-white font-bold text-2xl">Update Status</h1>
+          </div>
+        </div>
+        <div className="flex flex-row mt-5">
+          <div className="w-2/3 h-80 bg-zinc-800 rounded-lg mr-5">
+            
+          </div>
+          <div className="w-1/3 h-80  bg-zinc-800 rounded-lg ml-5">
+            
+          </div>
+        </div>
+        <div className="flex flex-row mt-10">
+          <div className="w-7/12 h-80 bg-zinc-800 rounded-lg mr-5">
+            
+          </div>
+          <div className="w-5/12 ml-5 mt-4">
+            <div className="flex flex-row justify-between items-end">
+             <h1 className="text-white font-bold text-xl">Favorite Playlists</h1>
+             <p className="text-white text-sm">*In Past Week</p>
+            </div>
+            
+            <div className="bg-zinc-800 rounded-lg h-64 mt-5">
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
