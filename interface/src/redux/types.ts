@@ -1,7 +1,9 @@
 import { UserState } from './reducers/user';
+import { SpotifyState } from './reducers/spotify';
 
 export type RootState = {
   user: UserState,
+  spotify: SpotifyState,
 };
 
 export interface Setting {
@@ -10,3 +12,17 @@ export interface Setting {
   description: string,
   switch: boolean,
 };
+
+export interface Playlist {
+  id: string,
+  playlistCoverUri: string,
+  playlistName: string,
+  playlistLabels: string[],
+}
+
+export interface Update {
+  id: number,
+  playlistCoverUri: string,
+  playlistName: string,
+  updateComplete: boolean,
+}

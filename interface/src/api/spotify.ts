@@ -3,7 +3,7 @@ import { spotifyConfig } from '../config';
 
 const handleSpotifyAuthentication = () => {
   const { clientId, redirectUri } = spotifyConfig;
-  const scope = encodeURIComponent('user-read-private user-read-email');
+  const scope = encodeURIComponent('user-read-private user-read-email playlist-read-private');
 
   const authEndpoint = 
     `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=token`

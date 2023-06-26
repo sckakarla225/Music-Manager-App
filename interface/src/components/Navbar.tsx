@@ -5,8 +5,8 @@ import { RxOpenInNewWindow } from 'react-icons/rx';
 
 import { RootState } from '../redux/types';
 import { unsetUser, unsetBasicInfo } from '../redux/actions/userActions';
+import { unsetPlaylists, unsetUpdates } from '../redux/actions/spotifyActions';
 import spotifyLogo from '../assets/spotifygreenlogo.png';
-
 
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,8 @@ const Navbar: React.FC = () => {
   const logout = () => {
     dispatch(unsetUser());
     dispatch(unsetBasicInfo());
+    dispatch(unsetPlaylists());
+    dispatch(unsetUpdates());
     navigate("/");
   };
 

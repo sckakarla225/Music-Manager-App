@@ -1,12 +1,28 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import { RootState } from '../../redux/types';
-import { SideBar, Navbar, PlaylistInfo, UpdatePlaylist, PlaylistLeaderboard } from '../../components';
+import { setPlaylists, setUpdates } from '../../redux/actions/spotifyActions';
+import { 
+  SideBar, 
+  Navbar, 
+  PlaylistInfo, 
+  UpdatePlaylist, 
+  PlaylistLeaderboard 
+} from '../../components';
 
 const DashboardPage: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const accessToken = useSelector((state: RootState) => state.user.accessToken);
+  const userPlaylists = useSelector((state: RootState) => state.spotify.playlists);
+  const userUpdates = useSelector((state: RootState) => state.spotify.updates);
+
+  useEffect(() => {
+    
+  }, [userPlaylists, userUpdates]);
   
   return (
     <div className="flex flex-col min-h-screen bg-zinc-900">
