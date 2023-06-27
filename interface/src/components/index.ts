@@ -1,6 +1,11 @@
 import SideBar from './Sidebar';
 import Navbar from './Navbar';
-import { PlaylistInfo, UpdatePlaylist, PlaylistLeaderboard } from './Dashboard';
+import { 
+  PlaylistInfo, 
+  UpdatePlaylist, 
+  PlaylistLeaderboard,
+  LibraryStructure 
+} from './Dashboard';
 
 import InfoModal from './InfoModal';
 
@@ -11,4 +16,5 @@ export {
   PlaylistInfo,
   UpdatePlaylist,
   PlaylistLeaderboard, 
+  LibraryStructure,
 };

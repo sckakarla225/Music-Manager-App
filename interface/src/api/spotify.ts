@@ -1,3 +1,4 @@
+import axios from 'axios';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { spotifyConfig } from '../config';
 
@@ -33,8 +34,24 @@ const getUserBasicInfo = async (accessToken: string) => {
   }
 }
 
+const getUserPlaylistInfo = async (accessToken: string) => {
+  const playlistsEndpoint = 'https://api.spotify.com/v1/me/playlists';
+  const playlists: any = await axios.get(playlistsEndpoint, {
+    headers: {
+      Authorization: 'Bearer ' + accessToken,
+    }
+  });
+
+  console.log(playlists.data.items);
+  if (playlists.data.items && playlists.data.total !== 0) {
+    return playlists.data.items;
+  }
+  return [];
+}
+
 export { 
   handleSpotifyAuthentication, 
   handleSpotifyAccessToken, 
   getUserBasicInfo,
+  getUserPlaylistInfo,
 };

@@ -15,7 +15,11 @@ const PlaylistInfo: React.FC<PlaylistInfoProps> = ({
 }) => {
   return (
     <div>
-      
+      <h1 className="text-white">{playlistCoverUri}</h1>
+      <h1 className="text-white">{playlistName}</h1>
+      {playlistLabels.map((label) => (
+        <h1 className="text-white">{label}</h1>
+      ))}
     </div>
   );
 };
