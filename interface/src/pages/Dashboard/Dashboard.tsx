@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import { MdNavigateNext } from 'react-icons/md';
 
 import { RootState, Playlist } from '../../redux/types';
 import { setPlaylists, setUpdates } from '../../redux/actions/spotifyActions';
@@ -25,11 +29,21 @@ const DashboardPage: React.FC = () => {
   const [playlistsLoading, setPlaylistsLoading] = useState(true);
   const [updatesLoading, setUpdatesLoading] = useState(true);
 
+  const playlistCarouselSettings = {
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    arrows: true,
+    nextArrow: <MdNavigateNext color="white" />,
+    prevArrow: <></>
+  }
+
   useEffect(() => {
     const getPlaylists = async () => {
       if (accessToken) {
         const playlistInfo = await getUserPlaylistInfo(accessToken.toString());
         const playlists: Playlist[] = [];
+        
         playlistInfo.map((playlist: any) => {
           // TODO: Get labels for each playlist from API here
           const labels: string[] = ['Bollywood', 'Upbeat', 'Car', 'Friends'];
@@ -41,6 +55,7 @@ const DashboardPage: React.FC = () => {
           };
           playlists.push(formattedPlaylist);
         });
+
         dispatch((setPlaylists(playlists)));
         console.log(playlists);
         setPlaylistsLoading(false);
@@ -54,12 +69,12 @@ const DashboardPage: React.FC = () => {
   }, []);
   
   return (
-    <div className="flex flex-col min-h-screen bg-zinc-900">
+    <div className="flex flex-col min-h-screen pb-20 bg-zinc-900">
       <SideBar />
       <div className="ml-28 p-6 px-12">
         <Navbar />
       </div>
-      <div className="ml-32 p-6 px-12 flex flex-col h-screen">
+      <div className="ml-32 p-6 px-12 flex flex-col h-screen mb-10">
         <div className="flex flex-row items-end">
           <div className="w-2/3 mr-5">
             <div className="flex flex-row justify-between items-end">
@@ -72,25 +87,28 @@ const DashboardPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="w-1/3 ml-5">
+          <div className="w-1/3 ml-14">
             <h1 className="text-white font-bold text-2xl">Update Status</h1>
           </div>
         </div>
         <div className="flex flex-row mt-5">
-          <div className="w-2/3 h-80 bg-zinc-800 rounded-lg mr-5">
-            {playlistsLoading && (
+          <div className="w-2/3 h-full bg-zinc-800 rounded-lg py-5 px-8">
+            {playlistsLoading ? (
               <h1 className="text-white font-bold text-3xl">Loading...</h1>
-            )}
-            {userPlaylists.map((playlist) => (
-              <PlaylistInfo 
-                playlistCoverUri={playlist.playlistCoverUri}
-                playlistName={playlist.playlistName}
-                playlistLabels={playlist.playlistLabels}
-                addToUpdatePlaylistsFunc={() => {}}
-              />
-            ))}
+            ) : (
+              <Slider {...playlistCarouselSettings}>
+                {userPlaylists.map((playlist) => (
+                  <PlaylistInfo 
+                    playlistCoverUri={playlist.playlistCoverUri}
+                    playlistName={playlist.playlistName}
+                    playlistLabels={playlist.playlistLabels}
+                    addToUpdatePlaylistsFunc={() => {}}
+                  />
+                ))}
+              </Slider>
+            )}            
           </div>
-          <div className="w-1/3 h-80  bg-zinc-800 rounded-lg ml-5">
+          <div className="w-1/3 h-full  bg-zinc-800 rounded-lg ml-8">
             
           </div>
         </div>
