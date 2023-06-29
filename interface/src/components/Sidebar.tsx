@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
-import logo from '../assets/logo.png';
 import { AiFillHome, AiFillInfoCircle } from 'react-icons/ai';
 import { MdLibraryMusic, MdSettings } from 'react-icons/md';
+
+import { InfoModal } from '../components';
+import logo from '../assets/logo.png';
 
 const SideBar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [infoModalOpen, setInfoModalOpen] = useState(false);
 
   return (
     <div>
@@ -20,7 +23,7 @@ const SideBar: React.FC = () => {
             className={`my-5 cursor-pointer ${
               location.pathname == '/dashboard' 
                 || location.pathname == '/playlists'
-                || location.pathname == '/edit-labels' 
+                || location.pathname == '/edit-labels/' 
                 ? 'text-red-500' : 'text-white'}`
             } 
             size={30}
@@ -40,8 +43,10 @@ const SideBar: React.FC = () => {
           />
           <AiFillInfoCircle 
             className="text-white my-5 cursor-pointer" 
-            size={30}  
+            size={30}
+            onClick={() => setInfoModalOpen(true)}  
           />
+          <InfoModal isOpen={infoModalOpen} onCloseFunc={setInfoModalOpen} />
         </div>
       </aside>
     </div>

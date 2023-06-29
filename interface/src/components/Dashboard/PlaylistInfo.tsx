@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaEdit } from 'react-icons/fa';
 import { MdUpdate } from 'react-icons/md';
@@ -21,6 +22,7 @@ const PlaylistInfo: React.FC<PlaylistInfoProps> = ({
   playlistLabels,
 }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userUpdates = useSelector((state: RootState) => state.spotify.updates);
 
   const addToUpdates = (playlistId: string) => {
@@ -43,6 +45,8 @@ const PlaylistInfo: React.FC<PlaylistInfoProps> = ({
     } // TODO: Add alt case handling here
   }
 
+  const goToEditLabels = (playlistId: string) => navigate(`/edit-labels/${playlistId}`);
+
   return (
     <div className="flex flex-col justify-between bg-zinc-700 p-4 rounded-md mr-5">
       <div className="w-full">
@@ -62,7 +66,11 @@ const PlaylistInfo: React.FC<PlaylistInfoProps> = ({
         </div>
       </div>
       <div className="flex flex-row justify-between items-center w-48 mx-auto mt-3">
-          <FaEdit color="white" className="text-xl cursor-pointer" />
+          <FaEdit 
+            color="white" 
+            className="text-xl cursor-pointer"
+            onClick={() => goToEditLabels(playlistId)} 
+          />
           <div 
             className="flex flex-row items-center rounded-full bg-red-500 w-10 h-10 hover:bg-red-400 cursor-pointer"
             onClick={() => addToUpdates(playlistId)}

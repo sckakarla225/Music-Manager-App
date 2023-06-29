@@ -36,7 +36,8 @@ const DashboardPage: React.FC = () => {
     slidesToScroll: 3,
     arrows: true,
     nextArrow: <MdNavigateNext color="white" />,
-    prevArrow: <></>
+    prevArrow: <></>,
+    useTransforms: false,
   };
 
   useEffect(() => {

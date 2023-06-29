@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/playlists" element={<ViewPlaylistsPage />} />
-          <Route path="/edit-labels" element={<EditLabelsPage />} />
+          <Route path="/edit-labels/:playlistId" element={<EditLabelsPage />} />
           <Route path="/library" element={<OrganizeLibraryPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Routes>
