@@ -21,7 +21,7 @@ export interface Playlist {
 }
 
 export interface Update {
-  id: number,
+  id: string,
   playlistCoverUri: string,
   playlistName: string,
   updateComplete: boolean,

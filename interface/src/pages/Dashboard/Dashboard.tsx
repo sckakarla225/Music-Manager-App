@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdNavigateNext } from 'react-icons/md';
 
-import { RootState, Playlist } from '../../redux/types';
+import { RootState, Playlist, Update } from '../../redux/types';
 import { setPlaylists, setUpdates } from '../../redux/actions/spotifyActions';
 import { 
   SideBar, 
@@ -36,14 +36,15 @@ const DashboardPage: React.FC = () => {
     arrows: true,
     nextArrow: <MdNavigateNext color="white" />,
     prevArrow: <></>
-  }
+  };
 
   useEffect(() => {
     const getPlaylists = async () => {
       if (accessToken) {
         const playlistInfo = await getUserPlaylistInfo(accessToken.toString());
-        const playlists: Playlist[] = [];
+        // TODO: Get updates from caching server
         
+        const playlists: Playlist[] = [];
         playlistInfo.map((playlist: any) => {
           // TODO: Get labels for each playlist from API here
           const labels: string[] = ['Bollywood', 'Upbeat', 'Car', 'Friends'];
@@ -57,8 +58,10 @@ const DashboardPage: React.FC = () => {
         });
 
         dispatch((setPlaylists(playlists)));
+        // TODO: Set updates to state
         console.log(playlists);
         setPlaylistsLoading(false);
+        setUpdatesLoading(false);
       } else {
         console.log("invalid access token");
       }
@@ -87,7 +90,7 @@ const DashboardPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="w-1/3 ml-14">
+          <div className="w-1/3 h-full ml-14">
             <h1 className="text-white font-bold text-2xl">Update Status</h1>
           </div>
         </div>
@@ -98,18 +101,31 @@ const DashboardPage: React.FC = () => {
             ) : (
               <Slider {...playlistCarouselSettings}>
                 {userPlaylists.map((playlist) => (
-                  <PlaylistInfo 
+                  <PlaylistInfo
+                    playlistId={playlist.id} 
                     playlistCoverUri={playlist.playlistCoverUri}
                     playlistName={playlist.playlistName}
                     playlistLabels={playlist.playlistLabels}
-                    addToUpdatePlaylistsFunc={() => {}}
                   />
                 ))}
               </Slider>
             )}            
           </div>
-          <div className="w-1/3 h-full  bg-zinc-800 rounded-lg ml-8">
-            
+          <div className="w-1/3 bg-zinc-800 rounded-lg ml-8 py-5 px-8 ">
+            {updatesLoading ? (
+              <h1 className="text-white font-bold text-3xl">Loading...</h1>
+            ) : (
+              <div className="flex flex-col overflow-y-auto h-96 divide-y divide-zinc-500">
+                {userUpdates.map((update) => (
+                  <UpdatePlaylist
+                    updateId={update.id} 
+                    playlistCoverUri={update.playlistCoverUri}
+                    playlistName={update.playlistName}
+                    updateComplete={update.updateComplete}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
         <div className="flex flex-row mt-10">

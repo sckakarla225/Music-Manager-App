@@ -4,7 +4,8 @@ import {
   PlaylistInfo, 
   UpdatePlaylist, 
   PlaylistLeaderboard,
-  LibraryStructure 
+  LibraryStructure,
+  PlaylistInfoAll,
 } from './Dashboard';
 
 import InfoModal from './InfoModal';
@@ -17,4 +18,5 @@ export {
   UpdatePlaylist,
   PlaylistLeaderboard, 
   LibraryStructure,
+  PlaylistInfoAll,
 };
