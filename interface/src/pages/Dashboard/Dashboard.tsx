@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { MdNavigateNext } from 'react-icons/md';
+import { Bars } from 'react-loader-spinner';
 
 import { RootState, Playlist, Update } from '../../redux/types';
 import { setPlaylists, setUpdates } from '../../redux/actions/spotifyActions';
@@ -97,7 +98,17 @@ const DashboardPage: React.FC = () => {
         <div className="flex flex-row mt-5">
           <div className="w-2/3 h-full bg-zinc-800 rounded-lg py-5 px-8">
             {playlistsLoading ? (
-              <h1 className="text-white font-bold text-3xl">Loading...</h1>
+              <div className="py-10 ml-10">
+                <Bars
+                  height="100"
+                  width="100"
+                  color="#FF6F6F"
+                  ariaLabel="bars-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              </div>
             ) : (
               <Slider {...playlistCarouselSettings}>
                 {userPlaylists.map((playlist) => (
@@ -113,7 +124,17 @@ const DashboardPage: React.FC = () => {
           </div>
           <div className="w-1/3 bg-zinc-800 rounded-lg ml-8 py-5 px-8 ">
             {updatesLoading ? (
-              <h1 className="text-white font-bold text-3xl">Loading...</h1>
+              <div className="py-10 ml-10">
+                <Bars
+                  height="80"
+                  width="80"
+                  color="#FF6F6F"
+                  ariaLabel="bars-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              </div>
             ) : (
               <div className="flex flex-col overflow-y-auto h-96 divide-y divide-zinc-500">
                 {userUpdates.map((update) => (
