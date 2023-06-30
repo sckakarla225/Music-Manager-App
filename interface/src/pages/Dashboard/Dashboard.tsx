@@ -29,6 +29,7 @@ const DashboardPage: React.FC = () => {
 
   const [playlistsLoading, setPlaylistsLoading] = useState(true);
   const [updatesLoading, setUpdatesLoading] = useState(true);
+  const [leaderboardLoading, setLeaderboardLoading] = useState(true);
 
   const playlistCarouselSettings = {
     infinite: true,
@@ -64,6 +65,7 @@ const DashboardPage: React.FC = () => {
         console.log(playlists);
         setPlaylistsLoading(false);
         setUpdatesLoading(false);
+        setLeaderboardLoading(false);
       } else {
         console.log("invalid access token");
       }
@@ -161,7 +163,21 @@ const DashboardPage: React.FC = () => {
             </div>
             
             <div className="bg-zinc-800 rounded-lg h-64 mt-5">
-              <PlaylistLeaderboard />
+              {leaderboardLoading ? (
+                <div className="py-10 ml-10">
+                  <Bars
+                    height="80"
+                    width="80"
+                    color="#FF6F6F"
+                    ariaLabel="bars-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                </div>
+              ) : (
+                <PlaylistLeaderboard />
+              )}
             </div>
           </div>
         </div>

@@ -11,7 +11,9 @@ import { RootState, Setting } from '../redux/types';
 const SettingsPage: React.FC = () => {
   const displayName = useSelector((state: RootState) => state.user.displayName);
   const imageUri: any = useSelector((state: RootState) => state.user.imageUri);
-  const playlistCount = 15; // placeholder
+  const playlistCount = useSelector((state: RootState) => state.spotify.playlists).length;
+  // TODO: Compute and load organization level from backend
+  const organizationLevel = 4;
 
   // TODO: Load settings from backend to redux store on landing, load data locally through useEffect
   const [settings, setSettings] = useState<Setting[]>([
@@ -70,7 +72,9 @@ const SettingsPage: React.FC = () => {
             <h1 className="text-white font-bold text-4xl">{displayName}</h1>
             <div className="flex flex-row mt-5">
               <h1 className="text-white font-semibold text-lg">Playlist Count: {playlistCount}</h1>
-              <h1 className="text-white font-semibold text-lg ml-14">Organization Level: --/10</h1>
+              <h1 className="text-white font-semibold text-lg ml-14">
+                Organization Level: {organizationLevel}/10
+              </h1>
             </div>
           </div>
         </div>
