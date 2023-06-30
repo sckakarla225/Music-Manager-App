@@ -25,9 +25,10 @@ const ViewPlaylistsPage: React.FC = () => {
             onClick={() => navigate('/dashboard')} 
           />
         </div>
-        <div className="flex flex-row flex-wrap mx-20 overflow-y-auto">
+        <div className="flex flex-row flex-wrap ml-20 mr-32 w-full overflow-y-auto">
           {userPlaylists.map((playlist) => (
-            <PlaylistInfoAll 
+            <PlaylistInfoAll
+              playlistId={playlist.id} 
               playlistCoverUri={playlist.playlistCoverUri}
               playlistName={playlist.playlistName}
               playlistLabels={playlist.playlistLabels}
