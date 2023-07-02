@@ -38,6 +38,7 @@ const SettingsPage: React.FC = () => {
   ]);
 
   const handleSettingChange = (settingId: number, checked: boolean) => {
+    // TODO: Save settings to backend too
     setSettings(settings.map((setting: Setting) =>
       setting.id === settingId ? { ...setting, switch: checked } : { ...setting }
     ));
