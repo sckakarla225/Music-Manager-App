@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+import { Label } from '../types';
 
 export interface UserState {
   accessToken: string | null,
@@ -7,6 +8,7 @@ export interface UserState {
   profileURL: string | undefined,
   imageUri: Object[] | undefined,
   email: string | undefined,
+  labels: Label[] | undefined,
 }
 
 const initialState: UserState = {
@@ -16,6 +18,7 @@ const initialState: UserState = {
   profileURL: '',
   imageUri: [],
   email: '',
+  labels: [],
 };
 
 const userReducer: Reducer<UserState> = (state = initialState, action) => {
@@ -42,6 +45,10 @@ const userReducer: Reducer<UserState> = (state = initialState, action) => {
         imageUri: [],
         email: '', 
       };
+    case 'SET_LABELS':
+      return { ...state, labels: action.payload.labels };
+    case 'UNSET_LABELS':
+      return { ...state, labels: [] };
     default:
       return state;
   }
