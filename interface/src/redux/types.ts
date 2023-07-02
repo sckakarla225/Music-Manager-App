@@ -26,3 +26,9 @@ export interface Update {
   playlistName: string,
   updateComplete: boolean,
 }
+
+export interface Label {
+  id: string,
+  labelName: string,
+  labelCreatorId: string,
+}

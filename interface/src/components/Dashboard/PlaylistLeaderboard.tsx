@@ -21,7 +21,7 @@ const PlaylistLeaderboard: React.FC = () => {
     <div className="flex flex-row px-14 py-6 justify-between">
       
       <div className="flex flex-col mt-6">
-        <div className="flex flex-row mx-auto items-center rounded-full bg-red-500 w-16 h-16 drop-shadow-2xl">
+        <div className="flex flex-row mx-auto items-center rounded-full bg-red-400 w-16 h-16 drop-shadow-2xl">
           <h1 className="text-white font-black mx-auto text-xl">2</h1>
         </div>
         <div className="flex flex-row mx-auto mt-5">
@@ -37,7 +37,7 @@ const PlaylistLeaderboard: React.FC = () => {
       </div>
       
       <div className="flex flex-col">
-        <div className="flex flex-row mx-auto items-center rounded-full bg-red-500 w-20 h-20 drop-shadow-2xl">
+        <div className="flex flex-row mx-auto items-center rounded-full bg-red-400 w-20 h-20 drop-shadow-2xl">
           <h1 className="text-white font-black mx-auto text-3xl">1</h1>
         </div>
         <div className="flex flex-row mx-auto mt-5">
@@ -53,7 +53,7 @@ const PlaylistLeaderboard: React.FC = () => {
       </div>
 
       <div className="flex flex-col mt-10">
-        <div className="flex flex-row mx-auto items-center rounded-full bg-red-500 w-12 h-12 drop-shadow-2xl">
+        <div className="flex flex-row mx-auto items-center rounded-full bg-red-400 w-12 h-12 drop-shadow-2xl">
           <h1 className="text-white font-black mx-auto text-xl">3</h1>
         </div>
         <div className="flex flex-row mx-auto mt-5">

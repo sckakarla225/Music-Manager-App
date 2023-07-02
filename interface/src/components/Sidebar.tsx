@@ -23,7 +23,7 @@ const SideBar: React.FC = () => {
             className={`my-5 cursor-pointer ${
               location.pathname == '/dashboard' 
                 || location.pathname == '/playlists'
-                || location.pathname == '/edit-labels/' 
+                || location.pathname.includes('/edit-labels') 
                 ? 'text-red-500' : 'text-white'}`
             } 
             size={30}
