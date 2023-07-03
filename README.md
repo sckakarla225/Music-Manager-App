@@ -3,4 +3,4 @@
 
 Built using React.js, Redux, TailwindCSS, FastAPI, MongoDB, Redis, Spotify API
 
-autotunes.app
+https://autotunes.app
