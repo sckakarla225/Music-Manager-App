@@ -8,7 +8,7 @@ import {
 } from '../api';
 import { useNavigate } from 'react-router-dom';
 
-import logo from '../assets/logo.png';
+import logo from '../assets/LandingLogo.jpg';
 import spotifyLogo from '../assets/spotifylogo.png';
 import iTunesLogo from '../assets/ituneslogo.png';
 
@@ -45,9 +45,8 @@ const LandingPage: React.FC = () => {
         <div className="flex flex-wrap justify-center items-center mx-auto max-w-screen-xl p-4">
           <div className="flex flex-row items-center">
             <a href="/" className="flex items-center">
-              <img src={logo} className="" alt="Busking Logo" width={40} height={40} />
+              <img src={logo} className="h-10" alt="Busking Logo" />
             </a>
-            <p className="text-white font-bold ml-3 text-lg">autotunes</p>
           </div>
         </div>
       </nav>

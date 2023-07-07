@@ -4,7 +4,7 @@ import { AiFillHome, AiFillInfoCircle } from 'react-icons/ai';
 import { MdLibraryMusic, MdSettings } from 'react-icons/md';
 
 import { InfoModal } from '../components';
-import logo from '../assets/logo.png';
+import logo from '../assets/MainIconLogo.png';
 
 const SideBar: React.FC = () => {
   const location = useLocation();
@@ -17,7 +17,7 @@ const SideBar: React.FC = () => {
       <aside className="flex flex-col justify-between w-28 fixed left-0 top-0 min-h-screen bg-black p-10">
         <div className="mt-5">
           <a href="/" className="flex items-center my-5">
-            <img src={logo} className="" alt="Busking Logo" width={60} height={60} />
+            <img src={logo} className="" alt="Busking Logo" />
           </a>
           <AiFillHome 
             className={`my-5 cursor-pointer ${
